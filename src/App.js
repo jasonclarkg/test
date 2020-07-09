@@ -2,6 +2,7 @@ import React, { useState, Fragment } from 'react'
 import AddUserForm from './forms/AddUserForm'
 import EditUserForm from './forms/EditUserForm'
 import UserTable from './tables/UserTable'
+import "bootstrap/dist/css/bootstrap.min.css";
 /* import { Route, Switch } from 'react-router-dom'; */
 
 const App = () => {
@@ -25,7 +26,7 @@ const App = () => {
 	const [ editing, setEditing ] = useState(false)
 	const [isLoading, setIsLoading] = useState(false);
 
-	console.log("Rendering");
+	console.log("Renderingz");
 
 	// CRUD operations
 	const addUser = user => {
@@ -52,13 +53,13 @@ const App = () => {
 	}
 
 	return (
-		<div className="container">
-			<h1>Contact List with React JS by Jason Clark Galang</h1>
-			<div className="flex-row">
+		<div className="container mt-4">
+			<h3>Contact List with React JS by Jason Clark Galang</h3>
+			<div className="flex-column">
 				<div className="flex-large">
 					{editing ? (
 						<Fragment>
-							<h2>Edit user</h2>
+							<h4>Edit user</h4>
 							<EditUserForm
 								editing={editing}
 								setEditing={setEditing}
@@ -68,13 +69,12 @@ const App = () => {
 						</Fragment>
 					) : (
 						<Fragment>
-							<h2>Add user</h2>
 							<AddUserForm addUser={addUser} />
 						</Fragment>
 					)}
 				</div>
-				<div className="flex-large">
-					<h2>View users</h2>
+				<div className="flex-small mt-4">
+					<h4>List of Contact</h4>
 					<UserTable 
 					users={users} 
 					editRow={editRow} 

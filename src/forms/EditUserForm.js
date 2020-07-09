@@ -5,11 +5,11 @@ const EditUserForm = props => {
 
   useEffect(
     () => {
+      console.log("Renderingzzz")
       setUser(props.currentUser)
     },
     [ props ]
   )
-  // You can tell React to skip applying an effect if certain values haven’t changed between re-renders. [ props ]
 
   const handleInputChange = event => {
     const { name, value } = event.target

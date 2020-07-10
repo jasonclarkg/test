@@ -3,15 +3,10 @@ import AddUserForm from './forms/AddUserForm'
 import EditUserForm from './forms/EditUserForm'
 import UserTable from './tables/UserTable'
 import "bootstrap/dist/css/bootstrap.min.css";
-/* import { Route, Switch } from 'react-router-dom'; */
+
 
 const App = () => {
-	// Data
-	const usersData = [
-		{ id: 1, name: 'Tania', email: 'floppydiskette@test.com', contact: '123-456-789' },
-		{ id: 2, name: 'Craig', email: 'siliconeidolon@test.com', contact: '123-456-789'},
-		{ id: 3, name: 'Ben', email: 'benisphere@test.com', contact: '123-456-789' },
-	]
+
 
 	const initialState = { 
 		id: null, 
@@ -21,9 +16,9 @@ const App = () => {
 	}
 
 	// Setting state
-	const [ users, setUsers ] = useState(usersData)
-	const [ currentUser, setCurrentUser ] = useState(initialState)
-	const [ editing, setEditing ] = useState(false)
+	const [ users, setUsers ] = useState('')
+	const [ existingUser, setExistingUser ] = useState(initialState)
+	const [ editUser, setEditUser ] = useState(false)
 	const [isLoading, setIsLoading] = useState(false);
 
 	console.log("Renderingz");
@@ -35,35 +30,35 @@ const App = () => {
 	}
 
 	const deleteUser = id => {
-		setEditing(false)
-
+		setEditUser(false)
 		setUsers(users.filter(user => user.id !== id))
 	}
 
 	const updateUser = (id, updatedUser) => {
-		setEditing(false)
-
+		setEditUser(false)
 		setUsers(users.map(user => (user.id === id ? updatedUser : user)))
 	}
 
 	const editRow = user => {
-		setEditing(true)
-
-		setCurrentUser({ id: user.id, name: user.name, email: user.email, contact: user.contact })
+		setEditUser(true)
+		setExistingUser({ id: user.id, name: user.name, email: user.email, contact: user.contact })
 	}
+
+	/* const viewData = (user, id) => {
+		set
+	} */
 
 	return (
 		<div className="container mt-4">
-			<h3>Contact List with React JS by Jason Clark Galang</h3>
 			<div className="flex-column">
 				<div className="flex-large">
-					{editing ? (
+					{editUser ? (
 						<Fragment>
-							<h4>Edit user</h4>
+							
 							<EditUserForm
-								editing={editing}
-								setEditing={setEditing}
-								currentUser={currentUser}
+								edit={editUser}
+								setEdit={setEditUser}
+								existingUser={existingUser}
 								updateUser={updateUser}
 							/>
 						</Fragment>
@@ -74,7 +69,7 @@ const App = () => {
 					)}
 				</div>
 				<div className="flex-small mt-4">
-					<h4>List of Contact</h4>
+					
 					<UserTable 
 					users={users} 
 					editRow={editRow} 

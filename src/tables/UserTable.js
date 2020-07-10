@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const UserTable = props => (
   <table>
     <thead>
@@ -23,7 +24,7 @@ const UserTable = props => (
                 onClick={() => {
                   props.editRow(user)
                 }}
-                className="button muted-button"
+                className="button btn-secondary"
               >
                 Edit
               </button>
@@ -31,13 +32,13 @@ const UserTable = props => (
                 onClick={() => {
                   props.editRow(user)
                 }}
-                className="button muted-button"
+                className="button btn-info"
               >
                 View
               </button>
               <button
                 onClick={() => props.deleteUser(user.id)}
-                className="button muted-button"
+                className="button btn-danger"
               >
                 Delete
               </button>
@@ -46,7 +47,7 @@ const UserTable = props => (
         ))
       ) : (
         <tr>
-          <td colSpan={4}>No users</td>
+          <td colSpan={4}>Please add a new contact </td>
         </tr>
       )}
     </tbody>

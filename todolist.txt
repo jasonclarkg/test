@@ -1,0 +1,4 @@
+1. Use axios using axios.js (baseURL: https://reactjsjclg.firebaseio.com/)
+2. Must show usage of routing, 
+- three pages, (main page, view id, page did not load)
+3. Must show usage of create,retrieve,update and delete using HTTP axios @ number 1

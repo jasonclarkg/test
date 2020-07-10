@@ -32,7 +32,7 @@ const EditUserForm = props => {
       <label>Contact</label>
       <input type="tel" id ="tel" name="contact" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value={user.contact} placeholder="Format: 123-456-7890" onChange={handleInputChange} />
       <button>Update user</button>
-      <button onClick={() => props.setEditing(false)} className="button muted-button">
+      <button onClick={() => props.setEdit(false)} className="button muted-button">
         Cancel
       </button>
     </form>

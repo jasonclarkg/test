@@ -1,17 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 
 const AddUserForm = props => {
 	const initialState = { 
 		id: null, 
 		name: '', 
 		email: '', 
-		contact: '' 
+		contact: ''
 	}
 	const [ user, setUser ] = useState(initialState)
+	const [loading, isLoading] = useState(false)
 
 	const handleInputChange = event => {
+		event.preventDefault();
+		console.log(user)
 		const { name, value } = event.target
-
 		setUser({ ...user, [name]: value })
 	}
 
